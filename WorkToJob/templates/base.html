@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <link href="{% static 'fonts/profession/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'libraries/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'libraries/bootstrap-fileinput/css/fileinput.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'libraries/bootstrap-select/css/bootstrap-select.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/profession-black-green.css' %}" rel="stylesheet" type="text/css" id="style-primary">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.png' %}">
+    <title>Profession - Create Resume</title>
+</head>
+
+<body class="hero-content-dark footer-dark">
+<div class="page-wrapper">
+    <div class="header-wrapper">
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-brand">
+                    <div class="header-logo">
+                        <img src="{% static 'img/bkimg.png' %}" style="height: 60px; width: 180px;" alt="WorkToJob">
+                    </div><!-- /.header-logo-->
+                </div><!-- /.header-brand -->
+
+                <ul class="header-actions nav nav-pills">
+
+                    {% if user.is_authenticated %}
+
+                    <li><a href="{% url 'logout' %}?next=/accounts/login">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register_company_profile' %}">Sign Up</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'create_new_job' %}" class="primary">Post Job</a></li>
+                </ul><!-- /.header-actions -->
+
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div><!-- /.container -->
+        </div><!-- /.header-top -->
+
+        <div class="header-bottom">
+            <div class="container">
+                <ul class="header-nav nav nav-pills collapse">
+                    <li >
+                        <a href="/">Home</a>
+                    </li>
+                    <li >
+                        <a href="{% url 'create_new_job' %}">Add New Job</a>
+                    </li>
+                    <li >
+                        <a href="{% url 'create_new_job' %}">Job List</a>
+                    </li>
+                </ul>
+                <!-- /.header-search -->
+            </div><!-- /.container -->
+        </div><!-- /.header-bottom -->
+    </div><!-- /.header -->
+</div><!-- /.header-wrapper-->
+
+
+    <div class="main-wrapper">
+        <div class="main" style="background-image: url(/static/img/Picture4.png);background-repeat: repeat-y">
+            <div class="document-title">
+                <div class="container">
+                        {% block pageHead %}
+                        {% endblock %}
+                </div><!-- /.container -->
+            </div><!-- /.document-title -->
+
+            <div class="container" style="background-color: #fff;padding:2%">
+                        {% block pageContent %}
+                        {% endblock %}
+            </div><!-- /.container -->
+
+        </div><!-- /.main -->
+    </div><!-- /.main-wrapper -->
+</div><!-- /.page-wrapper -->
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.ezmark.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/collapse.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/tab.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/transition.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-fileinput/js/fileinput.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/cycle2/jquery.cycle2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/cycle2/jquery.cycle2.carousel.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libraries/countup/countup.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/profession.js' %}"></script>
+<style type="text/css">
+    
+
+.header-top {
+    padding: 0px 0px ! important;
+    position: relative;
+}
+
+.document-title {
+    padding: 20px 0px;
+}
+
+
+
+</style>
+</body>
+</html>
