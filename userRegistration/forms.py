@@ -27,7 +27,6 @@ class CompanyProfileForm(ModelForm):
         self.fields['email'].widget.attrs.update({'class' : "form-control"})
         self.fields['first_name'].widget.attrs.update({'class' : "form-control"})
         self.fields['last_name'].widget.attrs.update({'class' : "form-control"})
-
         self.fields['name'].widget.attrs.update({'class' : "form-control"})
         self.fields['description'].widget.attrs.update({'class' : "form-control"})
         self.fields['industry_type'].widget.attrs.update({'class' : "form-control"})
@@ -72,18 +71,19 @@ class CompanyProfileForm(ModelForm):
 
 
 class OpeningDetailsForm(ModelForm):
+
     class Meta:
         model = OpeningDetails
-        exclude = ['company']
-
+        exclude = ['company', 'created_at', 'active_status']
 
     def __init__(self, *args, **kwargs):
         super(OpeningDetailsForm, self).__init__(*args, **kwargs)
         self.fields['job_title'].widget.attrs.update({'class' : "form-control"})
+        self.fields['job_id'].widget.attrs.update({'class' : "form-control"})
+
         self.fields['job_description'].widget.attrs.update({'class' : "form-control"})
         #self.fields['Keywords'].widget.attrs.update({'class' : "form-control"})
         self.fields['skill'].widget.attrs.update({'class' : "form-control"})
-
         self.fields['work_experienc_min'].widget.attrs.update({'class' : "form-control"})
         self.fields['work_experienc_max'].widget.attrs.update({'class' : "form-control"})
         self.fields['annual_ctc_min'].widget.attrs.update({'class' : "form-control"})
@@ -94,7 +94,6 @@ class OpeningDetailsForm(ModelForm):
         self.fields['functional_area'].widget.attrs.update({'class' : "form-control"})
         self.fields['job_role'].widget.attrs.update({'class' : "form-control"})
         self.fields['qualifications'].widget.attrs.update({'class' : "form-control"})
-
         self.fields['contact_number'].widget.attrs.update({'class' : "form-control"})
         self.fields['contact_email'].widget.attrs.update({'class' : "form-control"})
 

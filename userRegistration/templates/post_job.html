@@ -3,41 +3,46 @@
     <h1 class="center">Post a Job</h1>
 {% endblock %}
 
+
+
+{% block breadcrumb %}
+	<ul class="breadcrumb">
+	    <li><a href="#">Home</a></li>
+	    <li><a href="#">Post Job</a></li>
+	</ul>
+{% endblock %}
+
+
+
 {% block pageContent %}
-
-<div class="document-breadcrumb">
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Post Job</a></li>
-        </ul>
-    </div><!-- /.container -->
-</div>
-
-
-{{form.errors}}
-
-
-
 <div class="row">
 
-
 	<form method="post" action='{% url "create_new_job" %}'>{% csrf_token %}
-
-
     <div class="col-sm-12">
         <form method="get" action="?">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Job Title</label>
-                        {{form.job_title}}
-                    </div><!-- /.form-group -->
 
+	                <div class="col-sm-6">
+	                    <div class="form-group">
+	                        <label>Job Title</label>
+	                        {{form.job_title}}
+	                        {{form.job_title.error}}
+	                    </div><!-- /.form-group -->
+	                </div><!-- /.col-* -->
+
+	                <div class="col-sm-6">
+	                    <div class="form-group">
+	                        <label>Job Id</label>
+	                        {{form.job_id}}
+	                        {{form.job_id.error}}
+	                    </div><!-- /.form-group -->
+	                </div><!-- /.col-* -->
 
                     <div class="form-group">
                         <label>Job Description</label>
                         {{form.job_description}}
+                        {{form.job_description.error}}
                     </div><!-- /.form-group -->
 
 
@@ -53,6 +58,7 @@
                     <div class="form-group">
                         <label>Work Experince Min</label>
                         {{form.work_experienc_min}}
+                        {{form.work_experienc_min.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -60,6 +66,7 @@
                     <div class="form-group">
                         <label>Work Experince Max</label>
                         {{form.work_experienc_max}}
+                        {{form.work_experienc_max.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
             </div><!-- /.row -->
@@ -72,6 +79,7 @@
                     <div class="form-group">
                         <label>Salary Min</label>
                         {{form.annual_ctc_min}}
+                        {{form.annual_ctc_min.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -79,6 +87,7 @@
                     <div class="form-group">
                         <label>Salary Max</label>
                         {{form.annual_ctc_max}}
+                        {{form.annual_ctc_max.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
             </div><!-- /.row -->
@@ -94,16 +103,19 @@
                     <div class="form-group">
                         <label>Qualifications</label>
                          {{form.qualifications}}
+                         {{form.qualifications.error}}
                     </div><!-- /.form-group -->
 
                     <div class="form-group">
                         <label>Skills</label>
                          {{form.skill}}
+                         {{form.skill.error}}
                     </div><!-- /.form-group -->
 
                     <div class="form-group">
                         <label>Job Location</label>
                         {{form.location}}
+                        {{form.location.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -111,6 +123,7 @@
                     <div class="form-group">
                         <label>Job Role</label>
                         {{form.job_role}}
+                        {{form.job_role.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
             </div><!-- /.row -->
@@ -123,6 +136,7 @@
                     <div class="form-group">
                         <label>No. Openings</label>
                         {{form.number_of_vacancies}}
+                        {{form.number_of_vacancies.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -130,6 +144,7 @@
                     <div class="form-group">
                         <label>Functional Area</label>
                         {{form.functional_area}}
+                        {{form.functional_area.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -137,6 +152,7 @@
                     <div class="form-group">
                         <label>Industry</label>
                         {{form.industry}}
+                        {{form.industry.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
             </div><!-- /.row -->
@@ -151,6 +167,7 @@
                     <div class="form-group">
                         <label>Contacr E-mail</label>
                         {{form.contact_email}}
+                        {{form.contact_email.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
 
@@ -158,6 +175,7 @@
                     <div class="form-group">
                         <label>Contact Number</label>
                         {{form.contact_number}}
+                        {{form.contact_number.error}}
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
             </div><!-- /.row -->

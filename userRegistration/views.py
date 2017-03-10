@@ -67,8 +67,7 @@ class CompanyAccountDetails(View):
 
     def get(self, requests):
         cmp_details = CompanyProfile.objects.get(user_profile=requests.user)
-        openong_details = OpeningDetails.objects.filter(company__user_profile = requests.user)
-        print openong_details
+        openong_details = OpeningDetails.objects.filter(company__user_profile = requests.user, active_status=True)
         context = {
             'cmp_details' : cmp_details,
             'openong_details' : openong_details
@@ -102,7 +101,35 @@ class PostNewJob(View):
         return render(requests, 'post_job.html', context)
 
 
+class JobDetails(View):
 
+    def get(self, requests, pk):
+        opng_details = OpeningDetails.objects.get(id=pk)
+        context = {
+            'opng_details' : opng_details
+        }
+        return render(requests, 'job_details.html', context)
+
+
+class CloseJobStatus(View):
+
+    def post(self, requests, pk):
+        opng_details = OpeningDetails.objects.get(id=pk)
+        opng_details.active_status = False
+        opng_details.save()
+        return HttpResponseRedirect('/')
+
+
+class CompanyJobListView(View):
+
+    def get(self, requests):
+        cmp_details = CompanyProfile.objects.get(user_profile=requests.user)
+        opng_details = OpeningDetails.objects.all()
+        context = {
+            'opng_details' : opng_details,
+            'cmp_details' : cmp_details
+        }
+        return render(requests, 'company_job_list.html', context)
 
 
 

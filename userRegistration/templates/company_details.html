@@ -3,16 +3,17 @@
     <h1 class="center">Profile Details</h1>
 {% endblock %}
 
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Company Profile</a></li>
+    </ul>
+{% endblock %}
+
+
 {% block pageContent %}
 
-<div class="document-breadcrumb">
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Company Profile</a></li>
-        </ul>
-    </div><!-- /.container -->
-</div>
 
 <div class="row">
     <div class="col-sm-4">
@@ -117,7 +118,7 @@
                     </div><!-- /.companies-list-item-image -->
 
                     <div class="companies-list-item-heading">
-                        <h2><a href="#">{{op_obj.job_title}}</a></h2>
+                        <h2><a href="{% url 'job_details' op_obj.id %}">{{op_obj.job_title}}</a></h2>
                         <h3>{{op_obj.location}}</h3>
 
                     </div><!-- /.companies-list-item-heading -->

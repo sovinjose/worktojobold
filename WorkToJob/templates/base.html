@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>{% load staticfiles %}
+<html ng-app="workTojob">{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +60,7 @@
                         <a href="{% url 'create_new_job' %}">Add New Job</a>
                     </li>
                     <li >
-                        <a href="{% url 'create_new_job' %}">Job List</a>
+                        <a href="{% url 'company_job_list_view' %}">Job List</a>
                     </li>
                 </ul>
                 <!-- /.header-search -->
@@ -79,6 +79,13 @@
                 </div><!-- /.container -->
             </div><!-- /.document-title -->
 
+            <div class="document-breadcrumb">
+                <div class="container">
+                    {% block breadcrumb %}
+                    {% endblock %}
+                </div><!-- /.container -->
+            </div>
+
             <div class="container" style="background-color: #fff;padding:2%">
                         {% block pageContent %}
                         {% endblock %}
@@ -89,6 +96,11 @@
 </div><!-- /.page-wrapper -->
 
 <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="{% static 'js/customangular.js' %}"></script>
+
 <script type="text/javascript" src="{% static 'js/jquery.ezmark.js' %}"></script>
 <script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/collapse.js' %}"></script>
 <script type="text/javascript" src="{% static 'libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js' %}"></script>

@@ -78,6 +78,7 @@ NO_OPENINGS = ((str(i), str(i)) for i in range(0, 20))
 class OpeningDetails(models.Model):
     company = models.ForeignKey(CompanyProfile)
     job_title = models.CharField(max_length=100)
+    job_id = models.CharField(max_length=100)
     job_description = models.TextField()
     #Keywords = models.TextField()
     work_experienc_min = models.CharField(max_length=100, choices=MIN_EXPERINCE)
@@ -93,6 +94,8 @@ class OpeningDetails(models.Model):
     skill = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=100, null=True, blank=True)
     contact_email = models.CharField(max_length=100)
+    active_status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 
